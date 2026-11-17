@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wireframe — GraphPath (mobile)</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 30px;
+        background: #ffffff;
+        color: #17201b;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      .sheet { width: 420px; margin: 0 auto; }
+      .head {
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #1f6f5c;
+      }
+      .kicker {
+        color: #1f6f5c;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1 { margin: 4px 0 3px; font-size: 27px; letter-spacing: -0.03em; }
+      .head p { margin: 0; color: #5d6b63; font-size: 12px; line-height: 1.4; }
+      .frame {
+        overflow: hidden;
+        border: 2px solid #cbd5d1;
+        border-radius: 12px;
+        background: #ffffff;
+      }
+      .section {
+        position: relative;
+        padding: 12px 13px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .section:last-child { border-bottom: 0; }
+      .section-label { display: none; }
+      .line { height: 7px; border-radius: 4px; background: #e2e8f0; }
+      .line.dark { background: #cbd5d1; }
+      .line.title { height: 13px; background: #94a3b8; }
+      .line.heading { height: 10px; background: #cbd5d1; }
+      .line.short { width: 62%; }
+      .line.tiny { width: 38%; }
+      .image-box {
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px dashed #cbd5d1;
+        border-radius: 5px;
+        background:
+          linear-gradient(to top right, transparent calc(50% - 1px), #e2e8f0 calc(50% - 1px), #e2e8f0 calc(50% + 1px), transparent calc(50% + 1px)),
+          linear-gradient(to bottom right, transparent calc(50% - 1px), #e2e8f0 calc(50% - 1px), #e2e8f0 calc(50% + 1px), transparent calc(50% + 1px)),
+          #f8fafc;
+      }
+      .image-box span {
+        padding: 2px 5px;
+        border-radius: 3px;
+        background: #ffffff;
+        color: #94a3b8;
+        font-family: Consolas, monospace;
+        font-size: 8px;
+        letter-spacing: 0.05em;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 11px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .logo-mark {
+        width: 22px;
+        height: 22px;
+        border: 1px solid #1f6f5c;
+        border-radius: 5px;
+        background: #e4f1ec;
+      }
+      .header .line { width: 64px; height: 8px; }
+      .header .menu {
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+        border: 1px solid #cbd5d1;
+        border-radius: 4px;
+        background: #ffffff;
+      }
+      .hero { display: flex; flex-direction: column; gap: 8px; padding: 16px 13px; }
+      .hero .image-box { height: 128px; }
+      .buttons { display: flex; gap: 6px; margin-top: 2px; }
+      .button { width: 104px; height: 24px; border: 1px solid #cbd5d1; border-radius: 4px; }
+      .button.primary { border-color: #1f6f5c; background: #1f6f5c; }
+      .toolbar {
+        display: flex;
+        gap: 6px;
+        padding: 7px 9px;
+        border-bottom: 1px solid #e2e8f0;
+        background: #f8fafc;
+      }
+      .toolbar .line { width: 54px; height: 7px; }
+      .toolbar .active { width: 56px; height: 20px; border-radius: 3px; background: #1f6f5c; }
+      .workspace { display: flex; flex-direction: column; }
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        padding: 9px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .control-box { height: 22px; border: 1px solid #cbd5d1; border-radius: 3px; background: #ffffff; }
+      .control-box.primary { border-color: #1f6f5c; background: #1f6f5c; }
+      .control-box.wide { grid-column: 1 / -1; }
+      .graph {
+        position: relative;
+        height: 230px;
+        padding: 9px;
+        background:
+          linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+          linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+        background-size: 14px 14px;
+      }
+      .graph-box { position: absolute; inset: 9px; border: 1px dashed #cbd5d1; border-radius: 4px; background: rgba(255,255,255,0.65); }
+      .graph-label { position: absolute; top: 14px; left: 16px; color: #94a3b8; font-family: Consolas, monospace; font-size: 8px; }
+      .graph svg { position: absolute; inset: 28px 12px 12px; width: calc(100% - 24px); height: calc(100% - 40px); }
+      .state {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 9px;
+        border-top: 1px solid #e2e8f0;
+      }
+      .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+      .metric { height: 26px; border: 1px solid #e2e8f0; border-radius: 3px; background: #f8fafc; }
+      .code {
+        height: 72px;
+        border: 1px solid #e2e8f0;
+        border-radius: 3px;
+        background: repeating-linear-gradient(to bottom, #f8fafc 0, #f8fafc 10px, #eef2f6 10px, #eef2f6 11px);
+      }
+      .table { padding: 9px; }
+      .table-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1fr;
+        border: 1px solid #e2e8f0;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .table-grid div { height: 20px; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+      .table-grid div:nth-child(-n + 3) { background: #f8fafc; }
+      .table-grid div:nth-child(3n) { border-right: 0; }
+      .table-grid div:nth-last-child(-n + 3) { border-bottom: 0; }
+      .cards { display: flex; flex-direction: column; gap: 7px; padding: 10px 12px; }
+      .card { display: flex; flex-direction: column; gap: 5px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 5px; }
+      .card .line { height: 6px; }
+      .app-card { display: flex; flex-direction: column; gap: 5px; }
+      .app-card .image-box { height: 88px; }
+      .steps { display: flex; flex-direction: column; gap: 9px; padding: 10px 12px; }
+      .step { display: flex; gap: 8px; align-items: flex-start; padding-top: 5px; border-top: 2px solid #cbd5d1; }
+      .step-num { width: 20px; height: 20px; flex: 0 0 20px; border-radius: 50%; background: #e4f1ec; }
+      .step-copy { display: flex; flex: 1; flex-direction: column; gap: 5px; }
+      .about { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+      .about .image-box { height: 106px; }
+      .footer { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; background: #f8fafc; }
+      .footer .line { width: 82px; }
+      .footer .line:last-child { width: 110px; }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <div class="head">
+        <div class="kicker">GraphPath · Wireframe</div>
+        <h1>Головна сторінка — mobile</h1>
+        <p>Одна колонка, збережений порядок сенсу: спочатку пояснення, потім взаємодія.</p>
+      </div>
+
+      <div class="frame">
+        <div class="header">
+          <div class="logo-mark"></div>
+          <div class="line dark"></div>
+          <div class="menu"></div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">Hero</span>
+          <div class="hero">
+            <div class="line tiny"></div>
+            <div class="line title" style="width: 92%"></div>
+            <div class="line title" style="width: 70%"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+            <div class="buttons">
+              <div class="button primary"></div>
+              <div class="button"></div>
+            </div>
+            <div class="image-box"><span>PHOTO / HERO</span></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">Workspace</span>
+          <div class="toolbar">
+            <div class="line dark"></div>
+            <div class="active"></div>
+            <div class="line"></div>
+          </div>
+          <div class="workspace">
+            <div class="controls">
+              <div class="control-box wide"></div>
+              <div class="control-box"></div>
+              <div class="control-box"></div>
+              <div class="control-box primary"></div>
+              <div class="control-box"></div>
+            </div>
+            <div class="graph">
+              <div class="graph-box"></div>
+              <div class="graph-label">GRAPH / SVG</div>
+              <svg viewBox="0 0 340 190" aria-hidden="true">
+                <g stroke="#cbd5d1" stroke-width="1.4" fill="none">
+                  <path d="M50 105 L120 48 L220 58 L288 112 L215 155 L95 150 Z" />
+                  <path d="M50 105 L95 150 M120 48 L215 155 M220 58 L215 155 M288 112 L215 155" />
+                </g>
+                <g fill="#ffffff" stroke="#94a3b8" stroke-width="1.4">
+                  <circle cx="50" cy="105" r="14" />
+                  <circle cx="120" cy="48" r="14" />
+                  <circle cx="220" cy="58" r="14" />
+                  <circle cx="288" cy="112" r="14" />
+                  <circle cx="215" cy="155" r="14" />
+                  <circle cx="95" cy="150" r="14" />
+                </g>
+                <g fill="#94a3b8" font-family="Consolas, monospace" font-size="8" text-anchor="middle">
+                  <text x="50" y="108">A</text>
+                  <text x="120" y="51">B</text>
+                  <text x="220" y="61">C</text>
+                  <text x="288" y="115">D</text>
+                  <text x="215" y="158">E</text>
+                  <text x="95" y="153">F</text>
+                </g>
+              </svg>
+            </div>
+            <div class="state">
+              <div class="metrics">
+                <div class="metric"></div><div class="metric"></div>
+                <div class="metric"></div><div class="metric"></div>
+              </div>
+              <div class="code"></div>
+            </div>
+          </div>
+          <div class="table">
+            <div class="line dark" style="width: 84px; height: 8px; margin-bottom: 6px"></div>
+            <div class="table-grid">
+              <div></div><div></div><div></div>
+              <div></div><div></div><div></div>
+              <div></div><div></div><div></div>
+              <div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">Algorithms</span>
+          <div class="cards">
+            <div class="card"><div class="line heading" style="width: 62%"></div><div class="line"></div><div class="line short"></div></div>
+            <div class="card"><div class="line heading" style="width: 62%"></div><div class="line"></div><div class="line short"></div></div>
+            <div class="card"><div class="line heading" style="width: 62%"></div><div class="line"></div><div class="line short"></div></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">Applications</span>
+          <div class="cards">
+            <div class="app-card"><div class="image-box"><span>PHOTO / CITY</span></div><div class="line heading" style="width: 60%"></div><div class="line short"></div></div>
+            <div class="app-card"><div class="image-box"><span>PHOTO / NETWORK</span></div><div class="line heading" style="width: 60%"></div><div class="line short"></div></div>
+            <div class="app-card"><div class="image-box"><span>PHOTO / LOGISTICS</span></div><div class="line heading" style="width: 60%"></div><div class="line short"></div></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">How it works</span>
+          <div class="steps">
+            <div class="step"><div class="step-num"></div><div class="step-copy"><div class="line heading" style="width: 64%"></div><div class="line"></div></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-copy"><div class="line heading" style="width: 64%"></div><div class="line"></div></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-copy"><div class="line heading" style="width: 64%"></div><div class="line"></div></div></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding: 0">
+          <span class="section-label">About</span>
+          <div class="about">
+            <div class="line tiny"></div>
+            <div class="line title" style="width: 88%"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+            <div class="image-box"><span>PHOTO / PROCESS</span></div>
+          </div>
+        </div>
+
+        <div class="section footer">
+          <div class="line dark"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,376 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.algorithms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.algo-card {
+  --card-accent: var(--accent);
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--card-accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
+  &--bfs {
+    --card-accent: var(--blue);
+  }
+
+  &--dfs {
+    --card-accent: var(--amber);
+  }
+
+  &--dijkstra {
+    --card-accent: var(--green);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__badge {
+    padding: 2px 7px;
+    border: 1px solid var(--card-accent);
+    border-radius: 4px;
+    color: var(--card-accent);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+  }
+
+  &__tagline {
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 12px;
+    font-size: 1.02rem;
+  }
+
+  > p {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  &__facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin: 14px 0;
+    padding: 9px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+
+    dt {
+      color: var(--text-muted);
+      font-size: 0.57rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    dd {
+      margin-top: 2px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+  }
+
+  &__uses {
+    margin: 0 0 14px;
+    padding-left: 15px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.45;
+
+    li {
+      margin-bottom: 2px;
+    }
+  }
+
+  .text-link {
+    margin-top: auto;
+  }
+}
+
+.comparison-panel {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 16px;
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 0.95rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.74rem;
+    }
+  }
+}
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.application-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  figcaption {
+    padding: 13px 14px 14px;
+
+    h3 {
+      font-size: 0.92rem;
+    }
+
+    p {
+      margin-top: 5px;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+
+    small {
+      display: block;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.62rem;
+    }
+  }
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.step-card {
+  padding-top: 14px;
+  border-top: 2px solid var(--border);
+
+  &__number {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+  }
+
+  p {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+.how-details {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 28px;
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
+  &__head {
+    h3 {
+      font-size: 0.98rem;
+    }
+
+    p {
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+  }
+}
+
+.how-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding-left: 10px;
+    border-left: 2px solid var(--border);
+  }
+
+  strong {
+    display: block;
+    font-size: 0.76rem;
+  }
+
+  span {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.about-copy {
+  h2 {
+    margin-top: 4px;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+  }
+
+  > p {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 17px;
+}
+
+.about-note {
+  margin-top: 17px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--amber);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+
+  strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+}
+
+.about-media {
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  figcaption {
+    padding: 8px 2px 2px;
+    color: var(--text-muted);
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .algorithms-grid,
+  .applications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .algo-card:last-child,
+  .application-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .algorithms-grid,
+  .applications-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .algo-card:last-child,
+  .application-card:last-child {
+    grid-column: auto;
+  }
+
+  .how-details {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .about-media {
+    order: 2;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .how-list {
+    grid-template-columns: 1fr;
+  }
+}

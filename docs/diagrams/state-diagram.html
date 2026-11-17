@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>State Diagram — GraphPath</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 38px;
+        background: #ffffff;
+        color: #17201b;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      .sheet {
+        width: 1060px;
+        margin: 0 auto;
+      }
+      .head {
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid #1f6f5c;
+      }
+      .kicker {
+        color: #1f6f5c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 5px 0 4px;
+        font-size: 34px;
+        letter-spacing: -0.03em;
+      }
+      .head p {
+        margin: 0;
+        color: #5d6b63;
+        font-size: 14px;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .state-title {
+        font-size: 19px;
+        font-weight: 700;
+      }
+      .state-subtitle {
+        fill: #5d6b63;
+        font-size: 12px;
+      }
+      .label {
+        fill: #475569;
+        stroke: #ffffff;
+        stroke-width: 5px;
+        stroke-linejoin: round;
+        paint-order: stroke;
+        font-size: 13px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .note {
+        fill: #64748b;
+        font-size: 12px;
+      }
+      .note-strong {
+        fill: #1f6f5c;
+        font-size: 12px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <div class="head">
+        <div class="kicker">GraphPath · UI states</div>
+        <h1>State Diagram</h1>
+        <p>Стани візуалізатора та переходи між ними під час керування алгоритмом.</p>
+      </div>
+
+      <svg viewBox="0 0 1060 520" role="img" aria-label="Діаграма станів візуалізатора">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+          </marker>
+        </defs>
+
+        <!-- initial pseudo-state -->
+        <circle cx="58" cy="258" r="9" fill="#17201b" />
+        <text x="58" y="290" text-anchor="middle" class="note">старт</text>
+        <path d="M 70 258 L 104 258" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+
+        <!-- Idle -->
+        <rect x="110" y="212" width="188" height="92" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+        <text x="204" y="251" text-anchor="middle" class="state-title">Idle</text>
+        <text x="204" y="273" text-anchor="middle" class="state-subtitle">Готово до запуску</text>
+
+        <!-- Running -->
+        <rect x="384" y="212" width="188" height="92" rx="12" fill="#e4f1ec" stroke="#1f6f5c" stroke-width="2" />
+        <text x="478" y="251" text-anchor="middle" class="state-title">Running</text>
+        <text x="478" y="273" text-anchor="middle" class="state-subtitle">Виконується</text>
+
+        <!-- Paused -->
+        <rect x="384" y="58" width="188" height="92" rx="12" fill="#fff3dc" stroke="#a85d08" stroke-width="2" />
+        <text x="478" y="97" text-anchor="middle" class="state-title">Paused</text>
+        <text x="478" y="119" text-anchor="middle" class="state-subtitle">Пауза</text>
+
+        <!-- Finished -->
+        <rect x="706" y="212" width="204" height="92" rx="12" fill="#e8f7ec" stroke="#15803d" stroke-width="2" />
+        <text x="808" y="251" text-anchor="middle" class="state-title">Finished</text>
+        <text x="808" y="273" text-anchor="middle" class="state-subtitle">Шлях знайдено / завершено</text>
+
+        <!-- Idle -> Running -->
+        <path d="M 298 258 L 376 258" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="337" y="246" class="label">Запустити</text>
+
+        <!-- Running -> Paused -->
+        <path d="M 500 212 L 500 158" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="514" y="187" style="text-anchor: start" class="label">Пауза</text>
+
+        <!-- Paused -> Running -->
+        <path d="M 456 150 L 456 204" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="442" y="187" style="text-anchor: end" class="label">Продовжити</text>
+
+        <!-- Running -> Finished -->
+        <path d="M 572 258 L 698 258" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="635" y="246" class="label">Останній крок</text>
+
+        <!-- Paused -> Finished -->
+        <path d="M 572 92 C 660 92, 700 160, 740 210" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="675" y="132" class="label">Крок до кінця</text>
+
+        <!-- Finished -> Idle -->
+        <path d="M 808 304 C 808 432, 204 432, 204 312" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+        <text x="506" y="418" class="label">Скинути / змінити граф або алгоритм</text>
+
+        <rect x="110" y="456" width="800" height="42" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+        <text x="510" y="482" text-anchor="middle" class="note">
+          <tspan class="note-strong">Правило:</tspan>
+          <tspan> будь-яка зміна графа, старту, фінішу або алгоритму скидає стан у Idle.</tspan>
+        </text>
+      </svg>
+    </main>
+  </body>
+</html>

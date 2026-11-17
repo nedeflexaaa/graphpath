@@ -1,0 +1,175 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.graph-canvas {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 420px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  user-select: none;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+  }
+
+  &--connect {
+    cursor: crosshair;
+  }
+}
+
+.graph-edge__line {
+  stroke: var(--border-strong);
+  stroke-width: 2;
+  transition:
+    stroke 140ms ease,
+    stroke-width 140ms ease;
+}
+
+.graph-edge__weight {
+  fill: var(--text-muted);
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.graph-edge--active .graph-edge__line {
+  stroke: var(--amber);
+  stroke-width: 3;
+}
+
+.graph-edge--path .graph-edge__line {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+
+.graph-node {
+  cursor: grab;
+  outline: none;
+  touch-action: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &__circle {
+    fill: var(--surface);
+    stroke: var(--border-strong);
+    stroke-width: 2;
+    transition:
+      fill 140ms ease,
+      stroke 140ms ease,
+      stroke-width 140ms ease;
+  }
+
+  &__label {
+    fill: var(--text);
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &:hover .graph-node__circle {
+    stroke: var(--accent);
+  }
+
+  &:focus-visible .graph-node__circle {
+    stroke: var(--accent);
+    stroke-width: 3;
+  }
+
+  &.is-connect-from .graph-node__circle {
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-dasharray: 5 3;
+  }
+
+  &--start .graph-node__circle {
+    fill: var(--blue-soft);
+    stroke: var(--blue);
+  }
+
+  &--end .graph-node__circle {
+    fill: var(--green-soft);
+    stroke: var(--green);
+  }
+
+  &--frontier .graph-node__circle {
+    fill: var(--blue-soft);
+    stroke: var(--blue);
+  }
+
+  &--visited .graph-node__circle {
+    fill: var(--slate-soft);
+    stroke: var(--slate);
+  }
+
+  &--current .graph-node__circle {
+    fill: var(--amber-soft);
+    stroke: var(--amber);
+    stroke-width: 3;
+  }
+
+  &--path .graph-node__circle {
+    fill: var(--green-soft);
+    stroke: var(--green);
+    stroke-width: 3;
+  }
+}
+
+.node-ring {
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+
+  &--start {
+    stroke: var(--blue);
+  }
+
+  &--end {
+    stroke: var(--green);
+  }
+}
+
+@media (max-width: $bp-md) {
+  .graph-canvas {
+    min-height: 380px;
+
+    svg {
+      min-height: 380px;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .graph-canvas {
+    min-height: 340px;
+
+    svg {
+      min-height: 340px;
+    }
+  }
+
+  .graph-node__label {
+    font-size: 10px;
+  }
+}
