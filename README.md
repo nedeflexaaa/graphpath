@@ -51,8 +51,7 @@ StemProject/
 ├── docs/
 │   ├── diagrams/         # User Flow, State Diagram, wireframes
 │   ├── report/           # звіт DOCX
-│   ├── presentation/     # презентація PPTX
-│   └── defense/          # сценарій захисту та Q&A
+│   └── presentation/     # презентація PPTX
 ├── screenshots/          # світла й темна теми, десктоп і мобільний
 └── scripts/              # генератори звіту, презентації та скриншотів
 ```
@@ -68,8 +67,7 @@ StemProject/
 ## Матеріали
 
 - `docs/report/GraphPath_Report.docx` — звіт;
-- `docs/presentation/GraphPath_Presentation.pptx` — презентація на 10 слайдів;
-- `docs/defense/GraphPath_Defense.md` — сценарій захисту та відповіді на запитання.
+- `docs/presentation/GraphPath_Presentation.pptx` — презентація на 10 слайдів.
 
 ## Фотографії
 
