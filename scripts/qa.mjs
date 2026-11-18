@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer-core';
 
-const URL = 'http://127.0.0.1:5173/';
+const URL = process.env.QA_URL || 'http://127.0.0.1:5173/';
 const EDGE = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 
 const browser = await puppeteer.launch({

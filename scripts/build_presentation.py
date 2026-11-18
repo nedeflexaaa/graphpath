@@ -616,6 +616,16 @@ for index, (num, title, body) in enumerate(conclusions):
 
 add_text(s, "Дякую за увагу", 0.8, 5.25, 7.0, 0.7, size=30, bold=True, color=ACCENT)
 add_text(s, "Готовий відповісти на запитання.", 0.8, 5.95, 7.0, 0.4, size=15, color=MUTED)
+add_text(
+    s,
+    "Код: github.com/nedeflexaaa/graphpath  ·  Демо: nedeflexaaa.github.io/graphpath",
+    0.8,
+    6.38,
+    8.6,
+    0.3,
+    size=9.5,
+    color=MUTED,
+)
 add_text(s, "GraphPath · 2026", 10.2, 6.35, 2.3, 0.3, size=11, color=MUTED, align=PP_ALIGN.RIGHT)
 add_footer(s, 10)
 add_notes(
