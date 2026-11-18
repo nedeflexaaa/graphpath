@@ -367,7 +367,7 @@ author_lines = [
 ]
 for text, bold in author_lines:
     p = doc.add_paragraph()
-    p.paragraph_format.left_indent = Cm(9.0)
+    p.paragraph_format.left_indent = Cm(8.5)
     p.paragraph_format.first_line_indent = Cm(0)
     p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.line_spacing = 1.15
@@ -538,7 +538,7 @@ para(
     "Застосунок реалізовано як клієнтський SPA без серверної частини. Такий вибір "
     "зумовлений навчальним характером проєкту: усі дані створюються в браузері, "
     "немає потреби в авторизації, базі даних або мережевих запитах. Стан зберігається "
-    "в React-компонентах, а тема оформлення — у localStorage [10]."
+    "в React-компонентах, а тема оформлення зберігається локально в браузері."
 )
 para(
     "Модель графа має вигляд Graph = {nodes, edges, start, end}, де вершина — це "
