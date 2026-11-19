@@ -71,7 +71,7 @@ StemProject/
 
 ## Фотографії
 
-Фотографії взято з [Unsplash](https://unsplash.com/) і використано згідно з [Unsplash License](https://unsplash.com/license). Усі зображення є реальними фотографіями, без генеративних ілюстрацій.
+Фотографії взято з [Unsplash](https://unsplash.com/) і використано згідно з [Unsplash License](https://unsplash.com/license).
 
 ## Репозиторій і демо
 
